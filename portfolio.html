@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="独立游戏开发者作品集 - 展示各类游戏项目和开发成果">
+    <meta name="keywords" content="独立游戏,游戏开发,作品集,游戏项目,indie games">
+    <title>作品集 | 独立游戏开发者</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+    <!-- 导航栏 -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">FromLan</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="portfolio.html" class="active">作品集</a></li>
+                <li><a href="about.html">关于我</a></li>
+                <li><a href="blog.html">开发日志</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="dark-mode-toggle" aria-label="切换深色/浅色模式">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-selector">
+                    <select id="language-select">
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 页面标题 -->
+    <section class="page-header">
+        <div class="container">
+            <h1>作品集</h1>
+            <p>探索我的游戏开发项目和创意作品</p>
+        </div>
+    </section>
+
+    <!-- 作品集筛选 -->
+    <section class="portfolio-filter">
+        <div class="container">
+            <div class="filter-categories">
+                <h3>按类别筛选</h3>
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-filter="all">全部</button>
+                    <button class="filter-tag" data-filter="pc">PC游戏</button>
+                    <button class="filter-tag" data-filter="mobile">手机游戏</button>
+                    <button class="filter-tag" data-filter="vr">VR体验</button>
+                </div>
+            </div>
+            
+            <div class="filter-categories">
+                <h3>按状态筛选</h3>
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-filter="all">全部</button>
+                    <button class="filter-tag" data-filter="released">已发布</button>
+                    <button class="filter-tag" data-filter="development">开发中</button>
+                    <button class="filter-tag" data-filter="prototype">原型阶段</button>
+                </div>
+            </div>
+            
+            <div class="filter-categories">
+                <h3>按风格筛选</h3>
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-filter="all">全部</button>
+                    <button class="filter-tag" data-filter="pixel">像素风格</button>
+                    <button class="filter-tag" data-filter="3d">3D游戏</button>
+                    <button class="filter-tag" data-filter="narrative">叙事类</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集项目 -->
+    <section class="portfolio-projects">
+        <div class="container">
+            <div class="projects-grid">
+                <!-- 项目1：幻境探索者 -->
+                <div class="project-card" id="phantom-explorer" data-categories="pc development pixel narrative">
+                    <div class="project-thumbnail">
+                        <img src="images/project-1.jpg" alt="幻境探索者游戏截图">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-modal="modal-1">
+                                    <i class="fas fa-info-circle"></i> 详情
+                                </a>
+                                <a href="https://store.steampowered.com" target="_blank" class="project-link">
+                                    <i class="fab fa-steam"></i> Steam
+                                </a>
+                                <a href="#" class="project-link video-link" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                    <i class="fas fa-play"></i> 宣传片
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>幻境探索者</h3>
+                        <p class="project-tags">PC | 开发中 | 像素风格 | 叙事类</p>
+                        <p class="project-description">一款融合了经典像素艺术与现代游戏机制的冒险解谜游戏。玩家将扮演一位穿梭于多重现实的探索者，通过解开环境谜题来揭示世界的秘密。</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-code-branch"></i> 开发中</span>
+                            <span><i class="fas fa-calendar-alt"></i> 预计2023年底发布</span>
+                            <span><i class="fas fa-cogs"></i> Unity引擎</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目2：星际殖民 -->
+                <div class="project-card" data-categories="pc released 3d">
+                    <div class="project-thumbnail">
+                        <img src="images/project-2.jpg" alt="星际殖民游戏截图">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-modal="modal-2">
+                                    <i class="fas fa-info-circle"></i> 详情
+                                </a>
+                                <a href="https://store.steampowered.com" target="_blank" class="project-link">
+                                    <i class="fab fa-steam"></i> Steam
+                                </a>
+                                <a href="#" class="project-link video-link" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                    <i class="fas fa-play"></i> 宣传片
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>星际殖民</h3>
+                        <p class="project-tags">PC | 已发布 | 3D</p>
+                        <p class="project-description">一款太空殖民模拟游戏，玩家需要在外星球上建立并管理自己的殖民地，应对各种环境挑战和资源管理问题。</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-check-circle"></i> 已发布</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2022年发布</span>
+                            <span><i class="fas fa-cogs"></i> Unreal引擎</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目3：梦境迷宫 -->
+                <div class="project-card" data-categories="mobile released pixel">
+                    <div class="project-thumbnail">
+                        <img src="images/project-3.jpg" alt="梦境迷宫游戏截图">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-modal="modal-3">
+                                    <i class="fas fa-info-circle"></i> 详情
+                                </a>
+                                <a href="https://play.google.com" target="_blank" class="project-link">
+                                    <i class="fab fa-google-play"></i> Google Play
+                                </a>
+                                <a href="https://apps.apple.com" target="_blank" class="project-link">
+                                    <i class="fab fa-app-store-ios"></i> App Store
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>梦境迷宫</h3>
+                        <p class="project-tags">手机游戏 | 已发布 | 像素风格</p>
+                        <p class="project-description">一款手机平台的迷宫解谜游戏，玩家需要在不断变化的梦境迷宫中找到出路，收集梦境碎片，解锁隐藏故事。</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-check-circle"></i> 已发布</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2021年发布</span>
+                            <span><i class="fas fa-cogs"></i> Unity引擎</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目4：虚拟艺术馆 -->
+                <div class="project-card" data-categories="vr prototype 3d">
+                    <div class="project-thumbnail">
+                        <img src="images/project-4.jpg" alt="虚拟艺术馆截图">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-modal="modal-4">
+                                    <i class="fas fa-info-circle"></i> 详情
+                                </a>
+                                <a href="#" class="project-link video-link" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                    <i class="fas fa-play"></i> 演示视频
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-download"></i> 原型下载
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>虚拟艺术馆</h3>
+                        <p class="project-tags">VR体验 | 原型阶段 | 3D</p>
+                        <p class="project-description">一款VR艺术体验应用，用户可以在虚拟艺术馆中欣赏世界名画和雕塑，并通过交互式体验了解艺术品背后的故事。</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-flask"></i> 原型阶段</span>
+                            <span><i class="fas fa-calendar-alt"></i> 开发中</span>
+                            <span><i class="fas fa-cogs"></i> Unreal引擎</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目5：像素农场 -->
+                <div class="project-card" data-categories="mobile development pixel">
+                    <div class="project-thumbnail">
+                        <img src="images/project-5.jpg" alt="像素农场游戏截图">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-modal="modal-5">
+                                    <i class="fas fa-info-circle"></i> 详情
+                                </a>
+                                <a href="#" class="project-link video-link" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                    <i class="fas fa-play"></i> 开发日志
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>像素农场</h3>
+                        <p class="project-tags">手机游戏 | 开发中 | 像素风格</p>
+                        <p class="project-description">一款休闲农场经营游戏，玩家可以种植作物、饲养动物、与NPC互动，体验像素风格的田园生活。</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-code-branch"></i> 开发中</span>
+                            <span><i class="fas fa-calendar-alt"></i> 预计2024年初发布</span>
+                            <span><i class="fas fa-cogs"></i> Godot引擎</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目6：记忆碎片 -->
+                <div class="project-card" data-categories="pc prototype narrative">
+                    <div class="project-thumbnail">
+                        <img src="images/project-6.jpg" alt="记忆碎片游戏截图">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" data-modal="modal-6">
+                                    <i class="fas fa-info-circle"></i> 详情
+                                </a>
+                                <a href="https://itch.io" target="_blank" class="project-link">
+                                    <i class="fab fa-itch-io"></i> Itch.io
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>记忆碎片</h3>
+                        <p class="project-tags">PC | 原型阶段 | 叙事类</p>
+                        <p class="project-description">一款叙事驱动的互动小说游戏，玩家通过收集记忆碎片，拼凑主角失去的记忆，探索多结局剧情。</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-flask"></i> 原型阶段</span>
+                            <span><i class="fas fa-calendar-alt"></i> 概念开发中</span>
+                            <span><i class="fas fa-cogs"></i> 自研引擎</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目详情模态框 -->
+    <div class="modal-container" id="modal-1">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <h2>幻境探索者</h2>
+                <p class="modal-subtitle">像素风格冒险解谜游戏</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-gallery">
+                    <div class="gallery-main">
+                        <img src="images/project-1-detail-1.jpg" alt="幻境探索者游戏截图">
+                    </div>
+                    <div class="gallery-thumbs">
+                        <img src="images/project-1-detail-1.jpg" alt="幻境探索者游戏截图" class="active">
+                        <img src="images/project-1-detail-2.jpg" alt="幻境探索者游戏截图">
+                        <img src="images/project-1-detail-3.jpg" alt="幻境探索者游戏截图">
+                        <img src="images/project-1-detail-4.jpg" alt="幻境探索者游戏截图">
+                    </div>
+                </div>
+                
+                <div class="modal-info">
+                    <div class="info-section">
+                        <h3>游戏概述</h3>
+                        <p>《幻境探索者》是一款融合了经典像素艺术与现代游戏机制的冒险解谜游戏。玩家将扮演一位穿梭于多重现实的探索者，通过解开环境谜题来揭示世界的秘密。</p>
+                        <p>游戏采用非线性叙事结构，玩家的选择将影响故事走向和结局。精心设计的解谜元素与情感共鸣的故事相结合，为玩家带来沉浸式的游戏体验。</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>核心特色</h3>
+                        <ul>
+                            <li><strong>多重现实系统：</strong>玩家可以在不同的现实层面之间切换，解开跨维度的谜题。</li>
+                            <li><strong>情感叙事：</strong>探索记忆与现实的边界，体验感人至深的故事。</li>
+                            <li><strong>精美像素艺术：</strong>手绘像素场景和角色，结合现代光影效果。</li>
+                            <li><strong>原创音乐：</strong>动态音乐系统，根据游戏情境变化音乐氛围。</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>技术亮点</h3>
+                        <p>游戏使用Unity引擎开发，实现了以下技术亮点：</p>
+                        <ul>
+                            <li>自定义2D光照系统，实现像素风格下的动态光影效果</li>
+                            <li>程序化生成的环境元素，提高游戏可重玩性</li>
+                            <li>高效的状态管理系统，实现复杂的游戏逻辑和多结局</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>开发状态</h3>
+                        <p>当前开发进度：75%</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                        <p>预计发布日期：2023年12月</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>媒体评价</h3>
+                        <div class="testimonial">
+                            <p>"《幻境探索者》将经典像素游戏的魅力与现代游戏设计理念完美结合，是今年最值得期待的独立游戏之一。"</p>
+                            <cite>— 游戏力量杂志</cite>
+                        </div>
+                        <div class="testimonial">
+                            <p>"令人惊叹的视觉风格和富有创意的解谜设计，这款游戏展示了独立开发者的无限潜力。"</p>
+                            <cite>— IndieGameReview.com</cite>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <a href="https://store.steampowered.com" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-steam"></i> 在Steam上查看
+                    </a>
+                    <a href="#" class="btn btn-secondary video-link" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <i class="fas fa-play"></i> 观看宣传片
+                    </a>
+                    <a href="#" class="btn btn-outline">
+                        <i class="fas fa-download"></i> 下载试玩版
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 视频播放模态框 -->
+    <div class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-modal-close">&times;</span>
+            <div class="video-container">
+                <iframe width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>FromLan</h3>
+                    <p>独立游戏开发者</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>导航</h4>
+                        <ul>
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="portfolio.html">作品集</a></li>
+                            <li><a href="about.html">关于我</a></li>
+                            <li><a href="blog.html">开发日志</a></li>
+                            <li><a href="contact.html">联系</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>社交媒体</h4>
+                        <ul>
+                            <li><a href="https://github.com/FromLan" target="_blank">GitHub</a></li>
+                            <li><a href="https://itch.io" target="_blank">Itch.io</a></li>
+                            <li><a href="https://store.steampowered.com" target="_blank">Steam</a></li>
+                            <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>资源</h4>
+                        <ul>
+                            <li><a href="#">开发工具</a></li>
+                            <li><a href="#">游戏资源</a></li>
+                            <li><a href="#">教程分享</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FromLan. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/portfolio.js"></script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="独立游戏开发者的开发日志 - 技术分享、设计思考和行业洞察">
+    <meta name="keywords" content="独立游戏,游戏开发,开发日志,技术分享,游戏设计">
+    <title>开发日志 | 独立游戏开发者</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+</head>
+<body class="dark-mode">
+    <!-- 导航栏 -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">FromLan</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="portfolio.html">作品集</a></li>
+                <li><a href="about.html">关于我</a></li>
+                <li><a href="blog.html" class="active">开发日志</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="dark-mode-toggle" aria-label="切换深色/浅色模式">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-selector">
+                    <select id="language-select">
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 页面标题 -->
+    <section class="page-header">
+        <div class="container">
+            <h1>开发日志</h1>
+            <p>分享游戏开发过程中的技术、设计和思考</p>
+        </div>
+    </section>
+
+    <!-- 博客内容 -->
+    <section class="blog-content">
+        <div class="container">
+            <div class="blog-layout">
+                <!-- 主内容区 -->
+                <div class="blog-main">
+                    <!-- 文章筛选 -->
+                    <div class="blog-filter">
+                        <div class="filter-categories">
+                            <button class="filter-tag active" data-filter="all">全部</button>
+                            <button class="filter-tag" data-filter="tech">技术深挖</button>
+                            <button class="filter-tag" data-filter="design">设计思考</button>
+                            <button class="filter-tag" data-filter="industry">行业洞察</button>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" id="blog-search" placeholder="搜索文章...">
+                            <button id="search-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 文章列表 -->
+                    <div class="blog-posts">
+                        <!-- 文章1 -->
+                        <article class="blog-post" id="lighting-system" data-categories="tech">
+                            <div class="post-header">
+                                <h2>实现高效的2D光照系统</h2>
+                                <div class="post-meta">
+                                    <span class="post-date"><i class="far fa-calendar-alt"></i> 2023年10月15日</span>
+                                    <span class="post-category"><i class="fas fa-tag"></i> 技术深挖</span>
+                                    <span class="post-read-time"><i class="far fa-clock"></i> 15分钟阅读</span>
+                                </div>
+                            </div>
+                            <div class="post-thumbnail">
+                                <img src="images/blog-1.jpg" alt="2D光照系统">
+                            </div>
+                            <div class="post-content">
+                                <p>在开发《幻境探索者》的过程中，我面临着如何在保持像素风格的同时实现动态光影效果的挑战。传统的3D光照系统无法直接应用于2D像素游戏，因此我开发了一套专门的2D光照解决方案。</p>
+                                
+                                <h3>光照系统的核心原理</h3>
+                                <p>这套系统的核心是基于着色器的2D光照渲染，结合了法线贴图技术和动态阴影投射。以下是实现这一系统的关键步骤：</p>
+                                
+                                <ol>
+                                    <li>为每个像素艺术资源创建对应的法线贴图</li>
+                                    <li>开发自定义着色器处理光源和阴影计算</li>
+                                    <li>实现动态光源管理系统</li>
+                                </ol>
+                                
+                                <h3>法线贴图生成</h3>
+                                <p>对于像素艺术，传统的法线贴图生成工具往往效果不佳。我开发了一个专门的工具来从像素艺术生成适合的法线贴图：</p>
+                                
+                                <div class="code-block">
+                                    <pre><code class="language-csharp">// 法线贴图生成器核心代码
+public Texture2D GenerateNormalMap(Texture2D sourceTexture, float strength)
+{
+    Texture2D normalMap = new Texture2D(sourceTexture.width, sourceTexture.height, 
+                                       TextureFormat.RGBA32, false);
+    
+    for (int y = 0; y < sourceTexture.height; y++)
+    {
+        for (int x = 0; x < sourceTexture.width; x++)
+        {
+            // 计算相邻像素的高度差
+            float heightL = GetHeightValue(sourceTexture, x - 1, y);
+            float heightR = GetHeightValue(sourceTexture, x + 1, y);
+            float heightU = GetHeightValue(sourceTexture, x, y + 1);
+            float heightD = GetHeightValue(sourceTexture, x, y - 1);
+            
+            // 计算法线向量
+            Vector3 normal = new Vector3(
+                (heightL - heightR) * strength,
+                (heightD - heightU) * strength,
+                1.0f
+            ).normalized;
+            
+            // 将法线向量转换为颜色
+            Color normalColor = new Color(
+                normal.x * 0.5f + 0.5f,
+                normal.y * 0.5f + 0.5f,
+                normal.z,
+                1.0f
+            );
+            
+            normalMap.SetPixel(x, y, normalColor);
+        }
+    }
+    
+    normalMap.Apply();
+    return normalMap;
+}
+
+private float GetHeightValue(Texture2D texture, int x, int y)
+{
+    // 确保坐标在纹理范围内
+    x = Mathf.Clamp(x, 0, texture.width - 1);
+    y = Mathf.Clamp(y, 0, texture.height - 1);
+    
+    // 使用亮度作为高度值
+    Color color = texture.GetPixel(x, y);
+    return color.r * 0.3f + color.g * 0.59f + color.b * 0.11f;
+}</code></pre>
+                                </div>
+                                
+                                <h3>光照着色器</h3>
+                                <p>下面是简化版的2D光照着色器，它处理多光源和法线贴图：</p>
+                                
+                                <div class="code-block">
+                                    <pre><code class="language-glsl">// 2D光照着色器片段
+Shader "Custom/PixelArtLighting"
+{
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+        _NormalMap ("Normal Map", 2D) = "bump" {}
+        _LightColor ("Light Color", Color) = (1,1,1,1)
+        _AmbientLight ("Ambient Light", Color) = (0.1,0.1,0.1,1)
+    }
+    
+    SubShader
+    {
+        Tags { "RenderType"="Opaque" "LightMode"="ForwardBase" }
+        
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #include "UnityCG.cginc"
+            
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+            };
+            
+            struct v2f
+            {
+                float2 uv : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+                float3 worldPos : TEXCOORD1;
+            };
+            
+            sampler2D _MainTex;
+            sampler2D _NormalMap;
+            float4 _MainTex_ST;
+            float4 _LightColor;
+            float4 _AmbientLight;
+            
+            // 光源数据
+            uniform float4 _LightPositions[20]; // 最多支持20个光源
+            uniform float4 _LightColors[20];
+            uniform float _LightIntensities[20];
+            uniform int _LightCount;
+            
+            v2f vert (appdata v)
+            {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+                return o;
+            }
+            
+            fixed4 frag (v2f i) : SV_Target
+            {
+                // 采样基础纹理和法线贴图
+                fixed4 col = tex2D(_MainTex, i.uv);
+                fixed3 normal = UnpackNormal(tex2D(_NormalMap, i.uv));
+                
+                // 环境光
+                fixed3 lighting = _AmbientLight.rgb;
+                
+                // 计算所有光源的贡献
+                for (int l = 0; l < _LightCount; l++)
+                {
+                    float3 lightPos = _LightPositions[l].xyz;
+                    float3 lightDir = normalize(lightPos - i.worldPos);
+                    
+                    // 计算衰减
+                    float distance = length(lightPos - i.worldPos);
+                    float attenuation = 1.0 / (1.0 + 0.1 * distance + 0.01 * distance * distance);
+                    
+                    // 计算漫反射
+                    float diff = max(0, dot(normal, lightDir));
+                    
+                    // 添加到总光照
+                    lighting += _LightColors[l].rgb * diff * attenuation * _LightIntensities[l];
+                }
+                
+                // 应用光照
+                col.rgb *= lighting;
+                return col;
+            }
+            ENDCG
+        }
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h3>性能优化</h3>
+                                <p>为了确保在低端设备上也能流畅运行，我实现了以下优化：</p>
+                                
+                                <ul>
+                                    <li>光源剔除：只处理视野范围内的光源</li>
+                                    <li>光源合并：距离很近的同色光源合并处理</li>
+                                    <li>LOD系统：根据距离使用不同精度的法线贴图</li>
+                                </ul>
+                                
+                                <div class="image-comparison">
+                                    <div class="comparison-slider">
+                                        <img src="images/lighting-before.jpg" alt="优化前的光照效果">
+                                        <div class="comparison-overlay">
+                                            <img src="images/lighting-after.jpg" alt="优化后的光照效果">
+                                        </div>
+                                        <div class="slider-handle"></div>
+                                    </div>
+                                    <p class="comparison-caption">左：优化前 | 右：优化后</p>
+                                </div>
+                                
+                                <h3>结论</h3>
+                                <p>通过这套自定义光照系统，我们成功地在保持像素艺术风格的同时，实现了动态、逼真的光影效果。这不仅提升了游戏的视觉表现力，还为游戏玩法带来了新的可能性，如基于光影的解谜元素。</p>
+                                
+                                <p>在下一篇文章中，我将分享如何利用这套光照系统实现特殊的游戏机制，敬请期待！</p>
+                            </div>
+                            <div class="post-footer">
+                                <div class="post-tags">
+                                    <span class="tag">Unity</span>
+                                    <span class="tag">着色器</span>
+                                    <span class="tag">2D游戏</span>
+                                    <span class="tag">光照系统</span>
+                                </div>
+                                <div class="post-share">
+                                    <span>分享：</span>
+                                    <a href="#" aria-label="分享到Twitter"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" aria-label="分享到Facebook"><i class="fab fa-facebook"></i></a>
+                                    <a href="#" aria-label="分享到LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="post-support">
+                                <p>如果你喜欢这篇文章，可以考虑支持我的创作：</p>
+                                <div class="support-buttons">
+                                    <a href="https://ko-fi.com" target="_blank" class="btn btn-primary"><i class="fas fa-coffee"></i> 请我喝咖啡</a>
+                                    <a href="https://patreon.com" target="_blank" class="btn btn-secondary"><i class="fab fa-patreon"></i> 成为赞助者</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 文章2 -->
+                        <article class="blog-post" id="puzzle-design" data-categories="design">
+                            <div class="post-header">
+                                <h2>如何设计引人入胜的解谜机制</h2>
+                                <div class="post-meta">
+                                    <span class="post-date"><i class="far fa-calendar-alt"></i> 2023年9月28日</span>
+                                    <span class="post-category"><i class="fas fa-tag"></i> 设计思考</span>
+                                    <span class="post-read-time"><i class="far fa-clock"></i> 12分钟阅读</span>
+                                </div>
+                            </div>
+                            <div class="post-thumbnail">
+                                <img src="images/blog-2.jpg" alt="解谜游戏设计">
+                            </div>
+                            <div class="post-content">
+                                <p>解谜游戏是一种特殊的游戏类型，它不仅考验玩家的智力，还能带来深刻的满足感。在开发《幻境探索者》的过程中，我总结了一些关于如何设计引人入胜的解谜机制的心得，今天就与大家分享。</p>
+                                
+                                <h3>解谜设计的核心原则</h3>
+                                <p>好的解谜设计应该遵循以下几个核心原则：</p>
+                                
+                                <ol>
+                                    <li><strong>清晰的规则</strong>：玩家应该能够理解谜题的基本规则和目标</li>
+                                    <li><strong>渐进的难度</strong>：从简单开始，逐步增加复杂度</li>
+                                    <li><strong>有意义的反馈</strong>：玩家的每次尝试都应该得到明确的反馈</li>
+                                    <li><strong>多种解法</strong>：允许不同思维方式的玩家找到自己的解决方案</li>
+                                    <li><strong>与叙事融合</strong>：谜题应该自然地融入游戏世界和故事</li>
+                                </ol>
+                                
+                                <h3>从简单到复杂的设计路径</h3>
+                                <p>在《幻境探索者》中，我设计了一套基于光影互动的解谜系统。下面是我如何从简单概念发展到复杂谜题的过程：</p>
+                                
+                                <div class="design-process">
+                                    <div class="process-step">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">
+                                            <h4>核心机制引入</h4>
+                                            <p>游戏开始时，玩家只需要将光源对准特定物体，激活简单的机关。这一阶段主要是让玩家熟悉基本操作。</p>
+                                        </div>
+                                    </div>
+                                    <div class="process-step">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">
+                                            <h4>机制变化</h4>
+                                            <p>引入不同颜色的光源，需要玩家将正确颜色的光照射到对应的接收器上。</p>
+                                        </div>
+                                    </div>
+                                    <div class="process-step">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">
+                                            <h4>机制组合</h4>
+                                            <p>加入反射镜、棱镜等元素，玩家需要通过这些工具改变光的路径或颜色。</p>
+                                        </div>
+                                    </div>
+                                    <div class="process-step">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">
+                                            <h4>环境整合</h4>
+                                            <p>将谜题融入到环境中，如利用自然光源、昼夜变化等环境因素。</p>
+                                        </div>
+                                    </div>
+                                    <div class="process-step">
+                                        <div class="step-number">5</div>
+                                        <div class="step-content">
+                                            <h4>多层次挑战</h4>
+                                            <p>设计需要多步骤、多角度思考的复杂谜题，考验玩家的综合解决问题能力。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h3>平衡难度与乐趣</h3>
+                                <p>解谜游戏最大的挑战在于难度平衡。太简单会让玩家感到无聊，太难则可能导致挫折。以下是我用来平衡难度的几种方法：</p>
+                                
+                                <ul>
+                                    <li><strong>分层提示系统</strong>：从微妙的环境线索到更直接的提示，玩家可以根据需要获取帮助</li>
+                                    <li><strong>渐进式教学</strong>：新机制总是先在简单环境中引入，然后再增加复杂度</li>
+                                    <li><strong>玩家测试反馈</strong>：大量的玩家测试，观察卡点并相应调整</li>
+                                </ul>
+                                
+                                <div class="quote-block">
+                                    <blockquote>
+                                        "最好的谜题是那些让玩家在解决后感到自己很聪明，而不是感觉设计者很聪明的谜题。"
+                                    </blockquote>
+                                    <cite>— Jonathan Blow，《时空幻境》开发者</cite>
+                                </div>
+                                
+                                <h3>案例分析：多维度思考谜题</h3>
+                                <p>游戏中期有一个我特别满意的谜题，它要求

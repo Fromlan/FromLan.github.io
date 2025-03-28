@@ -1,0 +1,659 @@
+/* 博客页面样式 */
+
+/* 页面标题样式 */
+.page-header {
+    background-color: var(--bg-color-light);
+    padding: 120px 0 60px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 博客内容布局 */
+.blog-content {
+    padding: 60px 0;
+    background-color: var(--bg-color);
+}
+
+.blog-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+/* 筛选和搜索 */
+.blog-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.filter-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-tag {
+    background-color: var(--bg-card);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-normal) ease;
+    color: var(--text-secondary);
+}
+
+.filter-tag:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.filter-tag.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+#blog-search {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 20px 0 0 20px;
+    color: var(--text-primary);
+    width: 200px;
+    outline: none;
+    transition: all var(--transition-fast) ease;
+}
+
+#blog-search:focus {
+    border-color: var(--primary-color);
+    width: 250px;
+}
+
+#search-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    transition: background-color var(--transition-fast) ease;
+}
+
+#search-btn:hover {
+    background-color: var(--primary-light);
+}
+
+/* 博客文章样式 */
+.blog-post {
+    background-color: var(--bg-card);
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    margin-bottom: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    padding: 30px 30px 20px;
+}
+
+.post-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--primary-light);
+}
+
+.post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.post-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.post-thumbnail {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow) ease;
+}
+
+.blog-post:hover .post-thumbnail img {
+    transform: scale(1.05);
+}
+
+.post-content {
+    padding: 30px;
+    line-height: 1.7;
+}
+
+.post-content h3 {
+    font-size: 1.5rem;
+    margin: 30px 0 15px;
+    color: var(--primary-light);
+}
+
+.post-content p {
+    margin-bottom: 20px;
+}
+
+.post-content ul,
+.post-content ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.post-content li {
+    margin-bottom: 10px;
+}
+
+.post-content img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+/* 代码块样式 */
+.code-block {
+    margin: 25px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.code-block pre {
+    margin: 0;
+    padding: 0;
+}
+
+.code-block code {
+    padding: 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    display: block;
+}
+
+/* 引用块样式 */
+.quote-block {
+    margin: 30px 0;
+    padding: 20px 30px;
+    background-color: rgba(98, 0, 234, 0.1);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 8px 8px 0;
+}
+
+.quote-block blockquote {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.quote-block cite {
+    display: block;
+    text-align: right;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* 设计流程样式 */
+.design-process {
+    margin: 30px 0;
+}
+
+.process-step {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.step-content {
+    padding-top: 5px;
+}
+
+.step-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--primary-light);
+}
+
+/* 图片对比滑块 */
+.image-comparison {
+    margin: 30px 0;
+}
+
+.comparison-slider {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.comparison-slider img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.comparison-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.comparison-overlay img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background-color: white;
+    transform: translateX(-50%);
+    cursor: ew-resize;
+    z-index: 10;
+}
+
+.slider-handle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.comparison-caption {
+    text-align: center;
+    margin-top: 10px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* 文章页脚 */
+.post-footer {
+    padding: 20px 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background-color: rgba(98, 0, 234, 0.1);
+    color: var(--primary-light);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    transition: all var(--transition-fast) ease;
+}
+
+.tag:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.post-share {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-secondary);
+}
+
+.post-share a {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast) ease;
+}
+
+.post-share a:hover {
+    color: var(--primary-light);
+    transform: translateY(-3px);
+}
+
+/* 支持区域 */
+.post-support {
+    padding: 30px;
+    background-color: rgba(98, 0, 234, 0.05);
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.post-support p {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+}
+
+.support-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 侧边栏样式 */
+.blog-sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar-widget {
+    background-color: var(--bg-card);
+    border-radius: var(--card-border-radius);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.sidebar-widget h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.sidebar-widget h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* 最新文章 */
+.recent-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.recent-post {
+    display: flex;
+    gap: 15px;
+}
+
+.recent-post-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.recent-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recent-post-info h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    transition: color var(--transition-fast) ease;
+}
+
+.recent-post-info h4:hover {
+    color: var(--primary-light);
+}
+
+.recent-post-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* 分类列表 */
+.categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-fast) ease;
+}
+
+.category-item:last-child {
+    border-bottom: none;
+}
+
+.category-item:hover {
+    padding-left: 5px;
+    color: var(--primary-light);
+}
+
+.category-count {
+    background-color: var(--primary-dark);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+/* 标签云 */
+.tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cloud-tag {
+    background-color: var(--bg-color);
+    color: var(--text-secondary);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    transition: all var(--transition-fast) ease;
+}
+
+.cloud-tag:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* 订阅表单 */
+.subscribe-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color var(--transition-fast) ease;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+}
+
+.subscribe-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color var(--transition-fast) ease;
+}
+
+.subscribe-btn:hover {
+    background-color: var(--primary-light);
+}
+
+/* 分页 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-card);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast) ease;
+}
+
+.page-link:hover,
+.page-link.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.page-link.prev,
+.page-link.next {
+    width: auto;
+    padding: 0 15px;
+    border-radius: 20px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .blog-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .blog-sidebar {
+        position: static;
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .post-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .post-thumbnail {
+        height: 300px;
+    }
+    
+    .post-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .support-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .comparison-slider {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-filter {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
+    #blog-search {
+        width: calc(100% - 50px);
+    }
+    
+    .post-thumbnail {
+        height: 200px;
+    }
+    
+    .post-content {
+        padding: 20px;
+    }
+}
